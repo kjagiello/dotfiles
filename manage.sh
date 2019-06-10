@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 usage() {
   echo "Usage: $0 [OPTIONS] COMMAND"
   echo ""
