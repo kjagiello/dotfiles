@@ -17,3 +17,9 @@ end
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set PATH "./node_modules/.bin" "/usr/local/sbin" $PATH
+
+if status --is-interactive
+    set -g fish_user_abbreviations
+    abbr --add dc docker-compose
+    abbr --add d docker
+end
