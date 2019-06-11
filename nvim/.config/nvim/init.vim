@@ -30,7 +30,7 @@ nnoremap <leader>H :NERDTreeFind<cr>
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 
 " Quick and easy file searching
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Use tmux split instead of a vim split as a workaround
