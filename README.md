@@ -24,6 +24,7 @@ cd .dotfiles/
 - fish
 - git
 - nvim
+- ssh
 - timewarrior
 - tmux
 
