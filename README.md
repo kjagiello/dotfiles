@@ -7,7 +7,7 @@ A modularized collection of my personal dotfiles.
 Close the repository into a directory in the root of your home directory:
 
 ```bash
-git clone https://github.com/kjagiello/dotfiles.git .dotfiles
+git clone https://github.com/kjagiello/dotfiles.git ~/.dotfiles
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ git clone https://github.com/kjagiello/dotfiles.git .dotfiles
 Install a module of your choosing:
 
 ```bash
-cd .dotfiles/
+cd ~/.dotfiles/
 ./manage.sh install [module name]
 ```
 
