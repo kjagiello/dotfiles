@@ -19,5 +19,13 @@ cd .dotfiles/
 ./manage.sh install [module name]
 ```
 
+## Available modules
+
+- fish
+- git
+- nvim
+- timewarrior
+- tmux
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
