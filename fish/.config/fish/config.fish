@@ -22,4 +22,5 @@ if status --is-interactive
     set -g fish_user_abbreviations
     abbr --add dc docker-compose
     abbr --add d docker
+    abbr --add vi nvim
 end
