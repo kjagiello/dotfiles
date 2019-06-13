@@ -336,7 +336,7 @@ nmap + :only<CR>
 function! BuildPythonCTags()
     echohl Comment
     echo 'Building ctags... '
-    silent! exe "!ctags -R -f .tags --options=/Users/kjagiello/.ctags.cnf"
+    silent! exe "!ctags -R -f .tags"
     redraw!
     echohl String
     echo "Successfully generated ctags!"
