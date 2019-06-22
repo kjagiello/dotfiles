@@ -170,7 +170,7 @@ let g:ale_set_quickfix = 0
 let g:ale_list_window_size = 5
 
 let g:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['eslint'], 'terraform': ['terraform']}
-let g:ale_linters = {'javascript': ['eslint'], 'terraform': ['tflint']}
+let g:ale_linters = {'javascript': ['eslint'], 'terraform': ['tflint'], 'python': ['flake8']}
 
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
