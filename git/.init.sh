@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-brew install diff-so-fancy
+brew install diff-so-fancy git-lfs
