@@ -2,8 +2,6 @@
 set tags=.tags                  " Set ctags folder name
 set ttimeoutlen=10              " faster leaving insert mode,
                                 " makes e.g. airline snappier
-"set ttyfast
-"set lazyredraw
 
 " enable true colors support
 set termguicolors
@@ -33,37 +31,12 @@ nnoremap <Leader>nn :NERDTreeToggle<CR>
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
-" Use tmux split instead of a vim split as a workaround
-" for messed up pane layout in vim
-"let g:fzf_prefer_tmux = 0
-
 " <C-p> to search files
 nnoremap <silent> <C-p> :Files<CR>
-"let g:fzf_layout = { 'window': '-tabnew' }
 
 " Buffer and ctag search
 nmap <C-e> :Tags<CR>
-" nmap <C-e> :Tags<CR>
-" nmap <C-S-e> :BTags<CR>
 nmap <Leader>f :Ag<Space>
-" nmap <C-s> :CtrlPBuffer<CR>
-" nmap ;; :CtrlPtjump<CR>
-" let g:ctrlp_tjump_only_silent = 1
-" let g:ctrlp_map = ''
-
-" Flake8 linting with async support
-"Plug 'neomake/neomake'
-"let g:neomake_python_enabled_makers = ['flake8']
-"let g:neomake_python_flake8_maker = {
-"  \ 'exe': '/opt/flake8/2.7.9/bin/flake8'
-"  \ }
-"let g:neomake_open_list = 1 " Open the quickfix list on make
-":noremap <Leader>f :Neomake<CR>
-"autocmd BufWritePost *.py Neomake
-
-" Improved code folding for Python
-"Plug 'tmhedberg/SimpylFold'
-"set foldlevel=99 " Not autofolding by default
 
 " Seamless pane/window navigation for vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -77,12 +50,6 @@ endif
 " Dockerfile syntax support
 Plug 'ekalinin/Dockerfile.vim'
 
-" JSX syntax support
-" Plug 'chemzqm/vim-jsx-improve'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" let g:jsx_ext_required = 0 " Enable the scheme for all JS-files
-
 " Fish script syntax
 Plug 'dag/vim-fish'
 
@@ -93,39 +60,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-" Typescript
-"Plug 'leafgarland/typescript-vim'
-
-" Better YAML support
-" Plug 'chase/vim-ansible-yaml'
-
 " Editor config
 Plug 'editorconfig/editorconfig-vim'
 
 " Molokai
-" let g:molokai_original = 0
-" let g:rehash256 = 1
 Plug 'justinmk/molokai'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-" Nginx configx syntax
-"Plug 'nginx.vim'
 
 " Dash integration
 Plug 'rizzatti/dash.vim'
 :nmap <Leader>d :Dash<CR>
-
-" Fuzzy buffer, tag search
-" Plug 'ctrlpvim/ctrlp.vim'
-
-" Far
-" Plug 'brooth/far.vim'
-" let g:far#window_height = 11
-" let g:far#preview_window_height = 20
-" let g:far#window_min_content_height = 80
-" let g:far#file_mask_favorites = ['**/*.py', '**/*.html', '**/*.js', '**/*.css', '**/*.*', '%']
-" let g:far#source = 'agnvim'
-" nmap <leader>f :F<space>
 
 " Search for visual selection
 vnoremap <expr> <leader>f '"0y:F ' . @0 . ' .<CR>'
@@ -133,18 +77,8 @@ vnoremap <expr> <leader>f '"0y:F ' . @0 . ' .<CR>'
 " noremap <expr> ;; '"0yiw:F ' . @0 . ' .<CR>'
 
 
-" Bufferline
-"Plug 'bling/vim-bufferline'
-"Plug 'ap/vim-buftabline'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-
 " Solarized theme
 Plug 'altercation/vim-colors-solarized'
-
-" Python import sorting
-" Plug 'fisadev/vim-isort'
-" let g:vim_isort_map = ''
 
 " Relative numbers toggle
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -201,24 +135,13 @@ Plug 'dhruvasagar/vim-table-mode'
 " Nomad syntax support
 Plug 'b4b4r07/vim-hcl'
 
-" Flow support
-"Plug 'flowtype/vim-flow'
-"let g:flow#autoclose = 1
-"let g:flow#qfsize = 0
-
-" JS autolint
-"Plug 'ruanyl/vim-fixmyjs'
-"let g:fixmyjs_rc_path = '.eslintrc.js'
-"au BufWritePre *.js :Fixmyjs
-"au BufWritePre *.jsx :Fixmyjs
-let g:javascript_plugin_flow = 1
+" Extended syntax support
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['markdown']
 
 "Plug 'jiangmiao/auto-pairs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'easymotion/vim-easymotion'
-"Plug 'benmills/vimux'
 
 " Livedown (Markdown live preview)
 nmap gm :LivedownPreview<CR>
@@ -227,36 +150,19 @@ let g:livedown_port = 7331
 let g:livedown_browser = 'chrome'
 Plug 'shime/vim-livedown'
 
-" Deoplete for async autocompletion
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" let g:deoplete#enable_at_startup = 1
-"
-" Plug 'davidhalter/jedi-vim'
-" let g:jedi#completions_command = '<leader>j'
 " Indentation based object
 Plug 'michaeljsmith/vim-indent-object'
 
-" Extra themes
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'morhetz/gruvbox'
-" Plug 'shinchu/lightline-gruvbox.vim'
-
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "
-" Plug 'ncm2/ncm2'
-" set completeopt=noinsert,menuone,noselect
-
-" Plug 'roxma/nvim-yarp'
-
 " Snippets
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-g>"
+let g:UltiSnipsJumpBackwardTrigger="<A-h>"
+let g:UltiSnipsJumpForwardTrigger="<A-l>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir = "~/.vim/plugged/ultisnips/snips"
 call plug#end()
 
 " Settings
@@ -266,45 +172,32 @@ set noerrorbells
 set nohlsearch
 set hidden
 colorscheme molokai
-" let ayucolor="light"
-" colorscheme ayu
 
 " Use the system clipboard
 let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
 set clipboard+=unnamedplus
-"set clipboard=unnamed
 
 " Whitespace
-":highlight ExtraWhitespace ctermbg=red guibg=red
-":match ExtraWhitespace /\s\+$/
-
 fun! TrimWhitespace()
     let l:save_cursor = getpos('.')
     %s/\s\+$//e
     call setpos('.', l:save_cursor)
 endfun
 
-" :noremap <Leader>W :call TrimWhitespace()<CR>
+" Shortcut for saving of buffers
 nnoremap <Leader>w :w<CR>
-nnoremap R "_d
 
 " Column 80 marker
 set colorcolumn=80
 
 :set autoread
 
-" Highlight current line in the active window
-" autocmd WinEnter * setlocal cursorline
-" autocmd WinLeave * setlocal nocursorline
-
+" Tab config for different syntaxes
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cpp setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType vim setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType erl setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-"autocmd FileType js setlocal ts=2 sts=2 shiftwidth=2 expandtab
-"autocmd FileType jsx setlocal ts=2 sts=2 shiftwidth=2 expandtab
-"autocmd FileType javascript.jsx setlocal ts=2 sts=2 shiftwidth=2 expandtab
 autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
@@ -342,15 +235,6 @@ endfunction
 
 nmap <F12> :call BuildPythonCTags()<CR>
 
-" Airline config
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#show_buffers=1
-" let g:airline#extensions#tabline#show_tabs=1
-" let g:airline_powerline_fonts = 1
-" let g:airline_symbols = {}
-" let g:airline_symbols.space = "\ua0"
-" let g:airline_extensions = ['branch', 'tabline']
-
 " Close bufferr without closing split
 :nmap <Leader>q :bp\|bd #<CR>
 
@@ -377,12 +261,6 @@ augroup vimrc
 
     " Update git gutter after ALE has run all the fixers
     autocmd User ALELintPost GitGutter
-
-    " Place a dummy sign in the gutter to keep it always open
-    " autocmd BufEnter * sign define dummy
-    " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-
-    " autocmd BufEnter * call ncm2#enable_for_buffer()
 augroup END
 set signcolumn=yes
 " Abbreviations
@@ -411,15 +289,9 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ }
 
-" --conf pyls.plugins.pycodestyle.enabled=False --conf pyls.plugins.flake8.enabled=False
-
 autocmd FileType python setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-
-"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>
 
 function SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
@@ -439,16 +311,6 @@ augroup LSP
   autocmd FileType cpp,c,python,javascript,javascript.jsx call SetLSPShortcuts()
 augroup END
 
-"
-" let g:ale_completion_enabled = 1
-" call ale#linter#Define('javascript', {
-" \   'name': 'mypyls',
-" \   'lsp': 'socket',
-" \   'address_callback': {-> '127.0.0.1:2088'},
-" \   'language': 'javascript',
-" \   'project_root_callback': 'ale#python#FindProjectRoot',
-" \})
-
 :command! -range FormatSQL <line1>,<line2>!sqlformat --reindent_aligned --keywords upper --identifiers lower -
 :command! -range FormatJSON <line1>,<line2>!jq .
 
@@ -456,10 +318,3 @@ augroup END
 let g:markdown_fenced_languages = ['html', 'json', 'typescript', 'python']
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-
-let g:UltiSnipsExpandTrigger="<c-g>"
-let g:UltiSnipsJumpBackwardTrigger="<A-h>"
-let g:UltiSnipsJumpForwardTrigger="<A-l>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir = "~/.vim/plugged/ultisnips/snips"
-"inoremap <c-g> <c-r>=UltiSnips#ExpandSnippet()<cr>
