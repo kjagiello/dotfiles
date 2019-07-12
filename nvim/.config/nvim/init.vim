@@ -139,9 +139,6 @@ vnoremap <expr> <leader>f '"0y:F ' . @0 . ' .<CR>'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 
-" Pretty icons
-Plug 'ryanoasis/vim-devicons'
-
 " Solarized theme
 Plug 'altercation/vim-colors-solarized'
 
@@ -364,13 +361,6 @@ nmap <leader>r *Ncgn
 set encoding=utf8
 set fillchars=vert:│
 highlight EndOfBuffer guifg=bg
-
-" Devicons
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 " Relative line number on by default
 set relativenumber
