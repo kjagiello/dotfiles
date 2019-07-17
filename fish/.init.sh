@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-brew install fish fzf bat
+brew install fish fzf bat tokei jq bat up
 
 # Install and activate fisher
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
