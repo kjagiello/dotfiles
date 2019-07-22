@@ -22,7 +22,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.js.map$',
                     \ '\.DS_Store', 'venv']
 
 " leader + n for finding current file in the file browser
-nnoremap <leader>H :NERDTreeFind<cr>
+nnoremap <leader>nf :NERDTreeFind<cr>
 
 " leader + nn for toggling the file browser
 nnoremap <Leader>nn :NERDTreeToggle<CR>
