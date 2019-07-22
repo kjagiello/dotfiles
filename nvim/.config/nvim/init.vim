@@ -278,8 +278,7 @@ highlight ALEWarningSign ctermfg=11 ctermbg=235 guifg=#ED6237 guibg=#232526
 " Live results
 set inccommand=nosplit
 
-" LSP (language server client)
-" ----------------------------
+" LSP support
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = '~/.vim/settings.json'
@@ -293,7 +292,7 @@ autocmd FileType python setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
 
-function SetLSPShortcuts()
+function! SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
