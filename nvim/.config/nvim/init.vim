@@ -108,20 +108,9 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]
       \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightlineFugitive',
-      \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-
-function! LightlineFugitive()
-    if exists("*fugitive#head")
-        let branch = fugitive#head()
-        return branch !=# '' ? ' '.branch : ''
-    endif
-    return ''
-endfunction
 
 " Table mode
 Plug 'dhruvasagar/vim-table-mode'
