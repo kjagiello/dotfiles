@@ -23,3 +23,6 @@ if status --is-interactive
     abbr --add d docker
     abbr --add vi nvim
 end
+
+# Improve ls colors on black background
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
