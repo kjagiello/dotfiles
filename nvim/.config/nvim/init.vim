@@ -36,16 +36,10 @@ nnoremap <silent> <C-p> :Files<CR>
 
 " Buffer and ctag search
 nmap <C-e> :Tags<CR>
-nmap <Leader>f :Ag<Space>
+nmap <Leader>f :Rg<Space>
 
 " Seamless pane/window navigation for vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
-
-" For easy searching in files
-Plug 'mileszs/ack.vim'
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 
 " Dockerfile syntax support
 Plug 'ekalinin/Dockerfile.vim'

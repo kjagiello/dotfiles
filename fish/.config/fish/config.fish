@@ -4,8 +4,7 @@ set fish_greeting
 set -x LANG en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
 
-set -x FZF_DEFAULT_OPTS "-x"
-set -x FZF_DEFAULT_COMMAND 'ag -g ""'
+set -x FZF_DEFAULT_COMMAND 'rg'
 
 set -x EDITOR "nvim"
 
