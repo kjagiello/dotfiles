@@ -300,3 +300,5 @@ augroup END
 let g:markdown_fenced_languages = ['html', 'json', 'typescript', 'python']
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Do not automatically select the first alternative in omni complete
+:set completeopt=longest,menuone
