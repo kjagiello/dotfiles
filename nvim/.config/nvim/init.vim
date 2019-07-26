@@ -146,6 +146,10 @@ let g:UltiSnipsJumpBackwardTrigger="<A-h>"
 let g:UltiSnipsJumpForwardTrigger="<A-l>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir = "~/.vim/plugged/ultisnips/snips"
+
+" Incremental tag generation
+Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_ctags_tagfile = '.tags'
 call plug#end()
 
 " Settings
