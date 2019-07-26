@@ -1,0 +1,16 @@
+--exclude=.bash_env
+--exclude=.git
+--exclude=.mypy_cache
+--exclude=.next
+--exclude=.venv
+--exclude=\*.bak
+--exclude=\*.map
+--exclude=\*.min.\*
+--exclude=\*.swp
+--exclude=bower_components
+--exclude=min
+--exclude=node_modules
+--exclude=package-lock.json
+--exclude=package.json
+--exclude=tags
+--exclude=vendor
