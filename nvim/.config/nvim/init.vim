@@ -252,6 +252,7 @@ augroup END
 set signcolumn=yes
 " Abbreviations
 ab pdb!! import pdb; pdb.set_trace()
+ab brk!! breakpoint()
 
 " Nicer comment line joining SHIFT-J
 if v:version > 703 || v:version == 703 && has('patch541')
