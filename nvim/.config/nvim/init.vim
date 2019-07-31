@@ -306,3 +306,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Do not automatically select the first alternative in omni complete
 :set completeopt=longest,menuone
+
+" Git-related mappings
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>ga :GitGutterStageHunk<CR>
+nnoremap <Leader>gr :GitGutterUndoHunk<CR>
