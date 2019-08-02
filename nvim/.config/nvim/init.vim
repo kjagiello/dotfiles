@@ -193,7 +193,6 @@ autocmd FileType make setlocal noexpandtab
 
 " Python support
 let g:python_host_prog = '/Users/kjagiello/.pyenv/shims/python'
-" let g:python3_host_prog = '/Users/kjagiello/.pyenv/shims/python3'
 let g:python3_host_prog = '/Users/kjagiello/.vim/neovim/bin/python'
 
 " Speeding up editorconfig by using the external command
