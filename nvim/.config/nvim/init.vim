@@ -233,7 +233,7 @@ set fillchars=vert:│
 highlight EndOfBuffer guifg=bg
 
 " Relative line number on by default
-set relativenumber
+" set relativenumber
 
 augroup vimrc
     " Clean the autogroup
