@@ -38,6 +38,12 @@ nnoremap <silent> <C-p> :Files<CR>
 nmap <C-e> :Tags<CR>
 nmap <Leader>f :Rg<Space>
 
+" Search for visual selection
+vnoremap <expr> <leader>f '"0y:Rg ' . @0 . '<CR>'
+
+" Search for word under cursor i.e. usages
+noremap <expr> ;; '"0yiw:Rg ' . @0 . '<CR>'
+
 " Seamless pane/window navigation for vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -64,12 +70,6 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " Dash integration
 Plug 'rizzatti/dash.vim'
 :nmap <Leader>d :Dash<CR>
-
-" Search for visual selection
-vnoremap <expr> <leader>f '"0y:F ' . @0 . ' .<CR>'
-" Search for word under cursor i.e. usages
-" noremap <expr> ;; '"0yiw:F ' . @0 . ' .<CR>'
-
 
 " Solarized theme
 Plug 'altercation/vim-colors-solarized'
