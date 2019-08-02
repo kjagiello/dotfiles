@@ -78,7 +78,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Async linting
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
