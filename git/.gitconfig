@@ -1,6 +1,6 @@
 [user]
 email = me@kjagiello.com
-signingkey = 38F8B975
+	signingkey = DD9A989AB430E62DBB805D41C9FDA0BC36D4C3F0
 name = Krzysztof Jagiello
 
 [alias]
@@ -39,3 +39,5 @@ clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
+[commit]
+	gpgsign = true

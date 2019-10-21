@@ -27,6 +27,9 @@ end
 # Improve ls colors on black background
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+# GPG agent
+set -x GPG_TTY (tty)
+
 # direnv seems to not load .envrc when opening a new split in tmux. This hack
 # solves the problem.
 cd .
