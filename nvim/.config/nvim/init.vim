@@ -312,3 +312,28 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gr :GitGutterUndoHunk<CR>
+
+" FZF floating window support
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let height = &lines - 3
+  let y = &lines - 3
+  let x = float2nr((&columns - width) / 2)
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': y,
+        \ 'col': x,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
+au FileType fzf set nonu nornu
+highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#d9d9d9 guibg=#242424
