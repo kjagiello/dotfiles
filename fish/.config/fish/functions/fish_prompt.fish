@@ -16,7 +16,3 @@ function fish_prompt
     printf "\$ "
     set_color normal
 end
-
-function fish_right_prompt
-    #intentionally left blank
-end
