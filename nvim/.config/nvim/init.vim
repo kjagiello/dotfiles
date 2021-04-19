@@ -28,7 +28,8 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 
 " Quick and easy file searching
-Plug '/usr/local/opt/fzf'
+" Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " <C-p> to search files
@@ -68,17 +69,17 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Molokai
 Plug 'justinmk/molokai'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+" Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Dash integration
 Plug 'rizzatti/dash.vim'
 :nmap <Leader>d :Dash<CR>
 
 " Solarized theme
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 
 " Relative numbers toggle
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Async linting
 Plug 'dense-analysis/ale'
@@ -97,8 +98,23 @@ let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_list_window_size = 5
 
-let g:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['eslint'], 'terraform': ['terraform']}
-let g:ale_linters = {'javascript': ['eslint'], 'terraform': ['tflint'], 'python': ['flake8', 'mypy']}
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+let g:ale_fixers = {
+    \ 'python': ['isort', 'black'],
+    \ 'javascript': ['eslint', 'prettier'],
+    \ 'typescript': ['eslint', 'prettier'],
+    \ 'terraform': ['terraform'],
+    \ 'javascriptreact': ['eslint'],
+    \ 'rust': ['rustfmt']
+    \ }
+let g:ale_linters = {
+    \ 'javascript': ['eslint'],
+    \ 'terraform': [],
+    \ 'python': ['flake8', 'mypy'],
+    \ 'sql': [],
+    \ 'rust': ['cargo']
+    \}
 
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
@@ -123,18 +139,17 @@ Plug 'b4b4r07/vim-hcl'
 
 " Extended syntax support
 Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown', 'python']
+let g:ftplugin_sql_omni_key = '<C-q>'
 
 "Plug 'jiangmiao/auto-pairs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'easymotion/vim-easymotion'
 
 " Livedown (Markdown live preview)
-nmap gm :LivedownPreview<CR>
-let g:livedown_open = 1
-let g:livedown_port = 7331
-let g:livedown_browser = 'chrome'
-Plug 'shime/vim-livedown'
+nmap gm :MarkdownPreview<CR>
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+let g:mkdp_auto_close = 0
 
 " Indentation based object
 Plug 'michaeljsmith/vim-indent-object'
@@ -142,17 +157,70 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "
 " Snippets
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-g>"
-let g:UltiSnipsJumpBackwardTrigger="<A-h>"
-let g:UltiSnipsJumpForwardTrigger="<A-l>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir = "~/.vim/plugged/ultisnips/snips"
+"Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"let g:UltiSnipsExpandTrigger="<c-g>"
+"let g:UltiSnipsJumpBackwardTrigger="<A-h>"
+"let g:UltiSnipsJumpForwardTrigger="<A-l>"
+"let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsSnippetsDir = "~/.vim/plugged/ultisnips/snips"
 
 " Incremental tag generation
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_ctags_tagfile = '.tags'
+
+" Performant highlightning
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Colorscheme
+" Plug 'arzg/vim-colors-xcode'
+
+" Increment/decrement visual blocks
+Plug 'triglav/vim-visual-increment'
+
+" Test runner
+Plug 'janko/vim-test'
+let test#strategy = "neovim"
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" Tree-sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Tree-sitter debugging utilities
+Plug 'nvim-treesitter/playground'
+
+" Debuger adapter protocol
+Plug 'mfussenegger/nvim-dap'
+
+" Tree-sitter compatible schema
+Plug 'sainnhe/sonokai'
+
+" Python scratchpad
+Plug 'metakirby5/codi.vim'
+
+" Plantumi support
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
+
+" Time logging
+"Plug '/Users/kjagiello/Dev/private/timelog'
+" nnoremap <Leader>ln :TimelogNewTask<CR>
+" nnoremap <Leader>le :TimelogEndTask<CR>
+" nnoremap <Leader>ld :TimelogCalculateSessionDuration<CR>
+" nnoremap <Leader>ls :TimelogSummarise<CR>
+" nnoremap <Leader>ljp :TimelogJumpToProject<CR>
+" nnoremap <Leader>ljt :TimelogJumpToTask<CR>
+" nnoremap <Leader>lje :TimelogJumpToEndTime<CR>
+
+" Svelte
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+" Lezer grammar support
+Plug 'nono/lezer.vim'
 call plug#end()
 
 " Settings
@@ -193,10 +261,12 @@ autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType ejs setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType make setlocal noexpandtab
+autocmd BufRead,BufNewFile *.tf set filetype=terraform
+autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
 
 " Python support
 let g:python_host_prog = '/Users/kjagiello/.pyenv/shims/python'
-let g:python3_host_prog = '/Users/kjagiello/.vim/neovim/bin/python'
+let g:python3_host_prog = '/Users/kjagiello/.pyenv/shims/python3.9'
 
 " Speeding up editorconfig by using the external command
 let g:EditorConfig_core_mode = 'external_command'
@@ -252,9 +322,6 @@ augroup vimrc
     autocmd User ALELintPost GitGutter
 augroup END
 set signcolumn=yes
-" Abbreviations
-ab pdb!! import pdb; pdb.set_trace()
-ab brk!! breakpoint()
 
 " Nicer comment line joining SHIFT-J
 if v:version > 703 || v:version == 703 && has('patch541')
@@ -276,11 +343,18 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'rust': ['rust-analyzer'],
     \ }
 
 autocmd FileType python setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+autocmd FileType ts setlocal omnifunc=LanguageClient#complete
+autocmd FileType svelte setlocal omnifunc=LanguageClient#complete
+
+nnoremap <leader>dp oimport pdb; pdb.set_trace()<Esc>
+nnoremap <leader>db obreakpoint()<Esc>
 
 function! SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
@@ -297,7 +371,7 @@ endfunction()
 
 augroup LSP
   autocmd!
-  autocmd FileType cpp,c,python,javascript,javascript.jsx call SetLSPShortcuts()
+  autocmd FileType rust,cpp,c,python,javascript,javascript.jsx call SetLSPShortcuts()
 augroup END
 
 :command! -range FormatSQL <line1>,<line2>!sqlformat --reindent_aligned --keywords upper --identifiers lower -
@@ -317,26 +391,73 @@ nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gr :GitGutterUndoHunk<CR>
 
 " FZF floating window support
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+" function! FloatingFZF()
+"   let buf = nvim_create_buf(v:false, v:true)
+"   call setbufvar(buf, '&signcolumn', 'no')
+"
+"   let width = float2nr(&columns - (&columns * 2 / 10))
+"   let height = &lines - 3
+"   let y = &lines - 3
+"   let x = float2nr((&columns - width) / 2)
+"
+"   let opts = {
+"         \ 'relative': 'editor',
+"         \ 'row': y,
+"         \ 'col': x,
+"         \ 'width': width,
+"         \ 'height': height
+"         \ }
+"
+"   call nvim_open_win(buf, v:true, opts)
+" endfunction
+"
+" au FileType fzf set nonu nornu
+" highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#d9d9d9 guibg=#242424
 
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let height = &lines - 3
-  let y = &lines - 3
-  let x = float2nr((&columns - width) / 2)
+" lua require'colorizer'.setup()
 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': y,
-        \ 'col': x,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
+" CTRL-A CTRL-Q to select all and build quickfix list
+" Credit: https://github.com/junegunn/fzf.vim/issues/185#issuecomment-322120216
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
 endfunction
 
-au FileType fzf set nonu nornu
-highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#d9d9d9 guibg=#242424
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+" Tree-sitter conf
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  }
+}
+EOF
+
+" Disable spellchecking for now as it is not really compatible with treesitter
+autocmd FileType * setlocal nospell
+
+" DAP configuration
+lua <<EOF
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  command = 'python';
+  args = { '-m', 'debugpy.adapter' };
+}
+EOF
