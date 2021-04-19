@@ -1,5 +1,7 @@
+--sort=yes
 --exclude=.bash_env
 --exclude=.git
+--exclude=.json
 --exclude=.mypy_cache
 --exclude=.next
 --exclude=.venv
