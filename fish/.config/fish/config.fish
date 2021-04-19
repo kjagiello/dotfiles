@@ -15,7 +15,7 @@ end
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
-set PATH "./node_modules/.bin" "/usr/local/sbin" $PATH
+set PATH "$HOME/.cargo/bin" "./node_modules/.bin" "/usr/local/sbin" "/usr/local/bin" $PATH
 
 if status --is-interactive
     set -g fish_user_abbreviations
