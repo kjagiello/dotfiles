@@ -22,6 +22,7 @@ brew "jq"
 brew "yq"
 brew "diff-so-fancy"
 cask "fork"
+brew "k3d"
 
 # Productivity
 cask "alfred"
