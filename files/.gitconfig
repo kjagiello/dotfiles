@@ -1,0 +1,44 @@
+[user]
+name = Krzysztof Jagiello
+email = me@kjagiello.com
+signingkey = 7C5D042DBE7099C2766F322CAFE13CAF5C5A771B
+
+[core]
+editor = nvim
+excludesfile = ~/.gitignore_global
+pager = diff-so-fancy | less --tabs=4 -RFX
+
+[commit]
+gpgsign = true
+
+[diff]
+algorithm = histogram
+
+[alias]
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+prune = fetch --prune
+up = "!f() { git pull origin ${1-$(git rev-parse --abbrev-ref HEAD)} --rebase --autostash; }; f"
+
+[color]
+ui = true
+
+[color "diff-highlight"]
+oldNormal = red bold
+oldHighlight = red bold 52
+newNormal = green bold
+newHighlight = green bold 22
+
+[color "diff"]
+meta = yellow
+frag = magenta bold
+commit = yellow bold
+old = red bold
+new = green bold
+whitespace = red reverse
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true

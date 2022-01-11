@@ -1,10 +1,15 @@
 # dotfiles
 
-A modularized collection of my personal dotfiles.
+A collection of my personal dotfiles.
+
+## Prerequisites
+
+- [Homebrew](https://github.com/Homebrew/brew) for installing dependencies
+- [mas-cli](https://github.com/mas-cli/mas) for installing Mac App Store applications
 
 ## Installation
 
-Close the repository into a directory in the root of your home directory:
+Clone the repository into a directory in the root of your home directory:
 
 ```bash
 git clone https://github.com/kjagiello/dotfiles.git ~/.dotfiles
@@ -12,21 +17,8 @@ git clone https://github.com/kjagiello/dotfiles.git ~/.dotfiles
 
 ## Usage
 
-Install a module of your choosing:
+Synchronize the dotfiles:
 
 ```bash
-cd ~/.dotfiles/
-./manage.sh install [module name]
+~/.dotfiles/sync.sh
 ```
-
-## Available modules
-
-- fish
-- git
-- nvim
-- ssh
-- timewarrior
-- tmux
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)

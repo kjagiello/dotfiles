@@ -1,8 +1,0 @@
-.DS_Store
-.mypy_cache/
-.nvimrc
-.tags
-.todo
-.venv/
-stellar.yaml
-venv/
