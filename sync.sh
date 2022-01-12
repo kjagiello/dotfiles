@@ -29,6 +29,7 @@ rsync -qavh --delete bin/ ~/.local/bin
 fisher_plugins=(
   jethrokuan/fzf
   evanlucas/fish-kubectl-completions
+  jorgebucaran/nvm.fish
 )
 for plugin in "${fisher_plugins[@]}"
 do
