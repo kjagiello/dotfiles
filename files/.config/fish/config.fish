@@ -25,4 +25,11 @@ if status is-interactive
     abbr -a dc "docker-compose"
     abbr -a t "terraform"
     abbr -a k "kubectl"
+
+    # pyenv support
+    set -x PYENV_ROOT $HOME/.pyenv
+    set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+    pyenv init --path | source
+    pyenv init - | source
 end
