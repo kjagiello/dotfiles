@@ -26,8 +26,11 @@ mkdir -p ~/.local/bin
 rsync -qavh --delete bin/ ~/.local/bin
 
 # Install fisher plugins
-fisher_plugins=( jethrokuan/fzf )
-for plugin in "${fisher_plugins[*]}"
+fisher_plugins=(
+  jethrokuan/fzf
+  evanlucas/fish-kubectl-completions
+)
+for plugin in "${fisher_plugins[@]}"
 do
   if ! fish -c "fisher list | grep -Fxq $plugin"; then
     fish -c "fisher install $plugin"
