@@ -24,6 +24,7 @@ brew "diff-so-fancy"
 cask "fork"
 brew "k3d"
 cask "tunnelblick"
+cask "aws-vault"
 
 # Productivity
 cask "alfred"
