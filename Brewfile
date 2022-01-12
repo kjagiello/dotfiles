@@ -23,12 +23,14 @@ brew "yq"
 brew "diff-so-fancy"
 cask "fork"
 brew "k3d"
+cask "tunnelblick"
 
 # Productivity
 cask "alfred"
 cask "mimestream"
 mas "Slack", id: 803453959
 mas "Moom", id: 419330170
+mas "1password", id: 1333542190
 
 # For Tmux
 tap "kjagiello/wifi"
