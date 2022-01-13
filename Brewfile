@@ -17,6 +17,7 @@ brew "coreutils"
 # Extra utilities
 brew "fzf"
 brew "the_silver_searcher"
+brew "ripgrep"
 brew "htop"
 brew "jq"
 brew "yq"
