@@ -26,6 +26,7 @@ cask "fork"
 brew "k3d"
 cask "tunnelblick"
 cask "aws-vault"
+brew "bat"
 
 # Productivity
 cask "alfred"
