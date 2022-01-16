@@ -5,7 +5,7 @@ function workon --description 'Moves you to the project directory and activates 
     end
 
     set -l dev_dir $HOME
-    set -l project_dirs 'Dev/5monkeys/' 'Dev/private/' 'School/'
+    set -l project_dirs 'Dev/billo/' 'Dev/private/'
 
     for dir in $project_dirs
         if test -d $dev_dir'/'$dir'/'$argv
