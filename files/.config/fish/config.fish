@@ -17,6 +17,9 @@ fish_add_path -m ~/.local/bin ~/.cargo/bin
 # Configure the TTY for GnuPG
 set -x GPG_TTY (tty)
 
+# Set the default Node version
+set --universal nvm_default_version v14.18.3
+
 if status is-interactive
     set fish_user_abbreviations
 
