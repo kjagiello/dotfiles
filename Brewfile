@@ -27,6 +27,13 @@ brew "k3d"
 cask "tunnelblick"
 cask "aws-vault"
 brew "bat"
+brew "argo"
+brew "stern"
+brew "sponge"
+cask "poedit"
+brew "imagemagick"
+brew "ctop"
+brew "tree"
 
 # Productivity
 cask "alfred"
