@@ -1,0 +1,5 @@
+--exclude=.venv
+--exclude=.tox
+--exclude=.mypy_cache
+--exclude=*.json
+--exclude=*.proto
