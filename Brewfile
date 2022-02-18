@@ -34,6 +34,7 @@ cask "poedit"
 brew "imagemagick"
 brew "ctop"
 brew "tree"
+brew "wget"
 
 # Productivity
 cask "alfred"
