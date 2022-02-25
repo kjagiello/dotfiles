@@ -35,6 +35,7 @@ brew "imagemagick"
 brew "ctop"
 brew "tree"
 brew "wget"
+brew "entr"
 
 # Productivity
 cask "alfred"
