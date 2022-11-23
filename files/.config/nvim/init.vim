@@ -27,6 +27,10 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 " leader + nn for toggling the file browser
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 
+" workaround for a bug where the prompt does not disappear
+" Issue: https://github.com/preservim/nerdtree/issues/1321
+let g:NERDTreeMinimalMenu=1
+
 " Quick and easy file searching
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -58,7 +62,8 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'dag/vim-fish'
 
 " Mark which lines have changed
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Git for VIM
 Plug 'tpope/vim-fugitive'
@@ -83,6 +88,7 @@ Plug 'rizzatti/dash.vim'
 
 " Async linting
 Plug 'dense-analysis/ale'
+" Plug '~/Dev/private/ale'
 
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
@@ -106,7 +112,9 @@ let g:ale_fixers = {
     \ 'typescript': ['eslint', 'prettier'],
     \ 'terraform': ['terraform'],
     \ 'javascriptreact': ['eslint'],
-    \ 'rust': ['rustfmt']
+    \ 'rust': ['rustfmt'],
+    \ 'dart': ['dart-format'],
+    \ 'go': ['gofmt']
     \ }
 let g:ale_linters = {
     \ 'javascript': ['eslint'],
@@ -148,13 +156,15 @@ Plug 'easymotion/vim-easymotion'
 
 " Livedown (Markdown live preview)
 nmap gm :MarkdownPreview<CR>
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug']}
 let g:mkdp_auto_close = 0
+let g:mkdp_echo_preview_url = 1
 
 " Indentation based object
 Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'neovim/nvim-lspconfig'
 "
 " Snippets
 "Plug 'honza/vim-snippets'
@@ -319,7 +329,7 @@ augroup vimrc
     autocmd BufWritePost * :call TrimWhitespace()
 
     " Update git gutter after ALE has run all the fixers
-    autocmd User ALELintPost GitGutter
+    " autocmd User ALELintPost GitGutter
 augroup END
 set signcolumn=yes
 
@@ -336,43 +346,43 @@ highlight ALEWarningSign ctermfg=11 ctermbg=235 guifg=#ED6237 guibg=#232526
 set inccommand=nosplit
 
 " LSP support
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_settingsPath = '~/.vim/settings.json'
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'rust': ['rust-analyzer'],
-    \ }
-
-autocmd FileType python setlocal omnifunc=LanguageClient#complete
-autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-autocmd FileType ts setlocal omnifunc=LanguageClient#complete
-autocmd FileType svelte setlocal omnifunc=LanguageClient#complete
-
-nnoremap <leader>dp oimport pdb; pdb.set_trace()<Esc>
-nnoremap <leader>db obreakpoint()<Esc>
-
-function! SetLSPShortcuts()
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-endfunction()
-
-augroup LSP
-  autocmd!
-  autocmd FileType rust,cpp,c,python,javascript,javascript.jsx call SetLSPShortcuts()
-augroup END
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_loadSettings = 1
+" let g:LanguageClient_settingsPath = '~/.vim/settings.json'
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['pyls'],
+"     \ 'javascript': ['javascript-typescript-stdio'],
+"     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+"     \ 'typescript': ['javascript-typescript-stdio'],
+"     \ 'rust': ['rust-analyzer'],
+"     \ }
+"
+" autocmd FileType python setlocal omnifunc=LanguageClient#complete
+" autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+" autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+" autocmd FileType ts setlocal omnifunc=LanguageClient#complete
+" autocmd FileType svelte setlocal omnifunc=LanguageClient#complete
+"
+" nnoremap <leader>dp oimport pdb; pdb.set_trace()<Esc>
+" nnoremap <leader>db obreakpoint()<Esc>
+"
+" function! SetLSPShortcuts()
+"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+" endfunction()
+"
+" augroup LSP
+"   autocmd!
+"   autocmd FileType rust,cpp,c,python,javascript,javascript.jsx call SetLSPShortcuts()
+" augroup END
 
 :command! -range FormatSQL <line1>,<line2>!sqlformat --reindent_aligned --keywords upper --identifiers lower -
 :command! -range FormatJSON <line1>,<line2>!jq .
@@ -389,6 +399,9 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gr :GitGutterUndoHunk<CR>
+
+" Yank current buffer path
+nnoremap <leader>cf :let @*=expand("%")<CR>
 
 " FZF floating window support
 " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -436,7 +449,6 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 " Tree-sitter conf
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
   },
@@ -460,4 +472,54 @@ dap.adapters.python = {
   command = 'python';
   args = { '-m', 'debugpy.adapter' };
 }
+EOF
+
+" LSPConfig
+lua <<EOF
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lx', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'dartls' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+-- Setup gitsigns
+require('gitsigns').setup()
 EOF
