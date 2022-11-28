@@ -37,14 +37,7 @@ return packer.startup(function(use)
   }
   use 'junegunn/fzf.vim'
   use 'christoomey/vim-tmux-navigator'
-  use 'tanvirtin/monokai.nvim'
-  use 'sainnhe/sonokai'
-  use 'marko-cerovac/material.nvim'
-  use 'ofirgall/ofirkai.nvim'
-  use 'NLKNguyen/papercolor-theme'
-  use 'catppuccin/nvim'
-  use 'cpea2506/one_monokai.nvim'
-  use 'yazeed1s/minimal.nvim'
+  use 'michaeljsmith/vim-indent-object'
   use 'navarasu/onedark.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
