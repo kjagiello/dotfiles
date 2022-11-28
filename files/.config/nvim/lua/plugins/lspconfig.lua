@@ -38,8 +38,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader>lk', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>lx', vim.lsp.buf.references, bufopts)
 
   -- Show diagnostics in a floating window
