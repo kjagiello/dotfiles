@@ -43,3 +43,5 @@ if status is-interactive
     pyenv init --path | source
     pyenv init - | source
 end
+
+direnv hook fish | source
