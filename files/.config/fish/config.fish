@@ -20,6 +20,10 @@ set -x GPG_TTY (tty)
 # Set the default Node version
 set --universal nvm_default_version v14.18.3
 
+# Go
+set -x GOPATH $HOME/go
+set -x PATH $PATH $GOPATH/bin
+
 if status is-interactive
     set fish_user_abbreviations
 
