@@ -12,18 +12,23 @@ vim.g.ale_set_loclist = 1
 vim.g.ale_set_quickfix = 0
 vim.g.ale_list_window_size = 5
 
+vim.g.ale_python_mypy_options = '--no-pretty'
+vim.g.ale_javascript_eslint_options = '--cache'
+
 vim.g.ale_fixers = {
-  python = {'isort', 'black'},
+  python = {'ruff', 'isort', 'black'},
   javascript = {'eslint', 'prettier'},
-  typescript = {'eslint', 'prettier'},
+  typescript = {'eslint', 'stylelint'},
   terraform = {'terraform'},
   javascriptreact = {'eslint'},
+  typescriptreact = {'eslint', 'stylelint'},
   rust = {'rustfmt'},
   dart = {'dart-format'},
   go = {'gofmt'},
 }
 vim.g.ale_linters = {
   javascript = {'eslint'},
+  typescriptreact = {'eslint', 'stylelint'},
   terraform = {},
   python = {'flake8', 'mypy'},
   sql = {},
