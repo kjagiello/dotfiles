@@ -37,6 +37,9 @@ if status is-interactive
     set -x PYENV_ROOT $HOME/.pyenv
     set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 
+    # fzf config
+    set -x FZF_DEFAULT_COMMAND rg --files
+
     pyenv init --path | source
     pyenv init - | source
 end
