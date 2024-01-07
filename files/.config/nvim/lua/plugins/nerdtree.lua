@@ -8,7 +8,7 @@ vim.g.NERDTreeMinimalMenu = 1
 vim.g.NERDTreeMinimalUI = 1
 
 -- Hide following files and directories from the tree
-vim.g.NERDTreeIgnore = {'\\.pyc$', '__pycache__', '\\.DS_Store', 'venv'}
+vim.g.NERDTreeIgnore = {'\\.pyc$', '__pycache__', '\\.DS_Store', '^\\.?venv$'}
 
 -- Keymaps
 map('n', '<leader>nn', ':NERDTreeToggle<CR>')

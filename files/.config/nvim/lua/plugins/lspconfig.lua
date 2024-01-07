@@ -7,7 +7,12 @@ end
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Inlay hints
+  -- if client.server_capabilities.inlayHintProvider then
+  --   vim.lsp.buf.inlay_hint(bufnr, true)
+  -- end
 
   -- Highlighting references.
   -- See: https://sbulav.github.io/til/til-neovim-highlight-references/
@@ -44,6 +49,9 @@ local on_attach = function(client, bufnr)
 
   -- Show diagnostics in a floating window
   vim.keymap.set('n', '<leader>le', function() vim.diagnostic.open_float(nil, { focus = false }) end, bufopts)
+
+  -- Use nvim-cmp for autocompletion
+  vim.keymap.set('i', '<C-x><C-o>', require('cmp').complete, bufopts)
 end
 
 -- Diagnostic settings:
@@ -75,6 +83,10 @@ local servers = {
     'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'rust_analyzer',
     'graphql',
 }
+
+
+-- cmp capabilities
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Call setup
 for _, lsp in ipairs(servers) do

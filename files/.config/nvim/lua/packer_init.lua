@@ -51,17 +51,20 @@ return packer.startup(function(use)
   }
   use {
     'j-hui/fidget.nvim',
+    tag = 'legacy',
     config = function()
       require('fidget').setup()
     end
   }
   use {
     'lewis6991/gitsigns.nvim',
+    tag = 'v0.6',
     config = function()
       require('gitsigns').setup()
     end
   }
   use 'tpope/vim-fugitive'
+  use 'almo7aya/openingh.nvim'
   use 'dense-analysis/ale'
   use {
     'ojroques/nvim-lspfuzzy',
@@ -72,7 +75,6 @@ return packer.startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -82,6 +84,16 @@ return packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   }
+
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/nvim-cmp'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  use 'github/copilot.vim'
+  use 'towolf/vim-helm'
+
+  use 'kaarmu/typst.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
