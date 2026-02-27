@@ -1,24 +1,35 @@
-# dotfiles
+# Dotfiles
 
-A collection of my personal dotfiles.
+This repo defines a macOS system configuration using nix-darwin, Home Manager and Determinate Nix.
 
-## Prerequisites
 
-- [Homebrew](https://github.com/Homebrew/brew) for installing dependencies
-- [mas-cli](https://github.com/mas-cli/mas) for installing Mac App Store applications
+## Setup from scratch
 
-## Installation
+1. Install Determinate Nix:
 
-Clone the repository into a directory in the root of your home directory:
+   ```sh
+   curl -L https://install.determinate.systems/nix | sh -s -- install
+   ```
 
-```bash
-git clone https://github.com/kjagiello/dotfiles.git ~/.dotfiles
-```
+3. Clone this repo:
 
-## Usage
+   ```sh
+   git clone <REPO_URL> ~/.dotfiles
+   cd ~/.dotfiles
+   ```
 
-Synchronize the dotfiles:
+4. Update host/user settings:
 
-```bash
-~/.dotfiles/sync.sh
-```
+   - Edit `flake.nix` and set `username` and `system`.
+   - Ensure the host directory matches `<username>-<system>` (for example `hosts/kjagiello-aarch64-darwin`).
+   - Set your macOS LocalHostName to the same value:
+
+     ```sh
+     sudo scutil --set LocalHostName <username>-<system>
+     ```
+
+5. Apply the configuration:
+
+   ```sh
+   nix develop -c apply-nix-darwin-configuration
+   ```
