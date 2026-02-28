@@ -8,8 +8,8 @@
   system.defaults.NSGlobalDomain = {
     AppleInterfaceStyle = "Dark";
     AppleInterfaceStyleSwitchesAutomatically = false;
-    InitialKeyRepeat = 10;
-    KeyRepeat = 1;
+    InitialKeyRepeat = 25;
+    KeyRepeat = 2;
   };
 
   system.defaults.dock = {
