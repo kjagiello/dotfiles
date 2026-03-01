@@ -21,6 +21,7 @@
       opencode
       restic
       ripgrep
+      tree-sitter
       uv
     ];
 
