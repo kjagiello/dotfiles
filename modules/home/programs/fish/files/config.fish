@@ -20,8 +20,10 @@ if status is-interactive
     abbr -a t "terraform"
     abbr -a k "kubectl"
 
-    set -x PATH $PYENV_ROOT/bin ./node_modules/.bin $PATH
+    set -x PATH $HOME/.local/bin ./node_modules/.bin $PATH
     set -x FZF_DEFAULT_COMMAND rg --files
 end
+
+eval "$(/opt/homebrew/bin/brew shellenv fish)"
 
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish

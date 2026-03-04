@@ -13,12 +13,15 @@
     ];
 
     home.packages = with pkgs; [
+      cocoapods
       delta
       fzf
+      fvm
       git
       htop
       nodejs
       opencode
+      go-task
       restic
       ripgrep
       tree-sitter
