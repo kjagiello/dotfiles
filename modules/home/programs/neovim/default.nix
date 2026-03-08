@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -20,7 +20,8 @@
 
   xdg.configFile."nvim/init.lua".source = ./files/init.lua;
   xdg.configFile."nvim/lua/plugins.lua".source = ./files/lua/plugins.lua;
-  xdg.configFile."nvim/lazy-lock.json".source = ./files/lazy-lock.json;
+  xdg.configFile."nvim/lazy-lock.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/modules/home/programs/neovim/files/lazy-lock.json";
 
   xdg.configFile."nvim/lua/core/options.lua".source = ./files/lua/core/options.lua;
   xdg.configFile."nvim/lua/core/keymaps.lua".source = ./files/lua/core/keymaps.lua;
