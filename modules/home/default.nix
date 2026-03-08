@@ -6,6 +6,7 @@
   }:
   {
     imports = [
+      ./programs/direnv
       ./programs/kitty
       ./programs/neovim
       ./programs/fish
